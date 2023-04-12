@@ -36,7 +36,7 @@ jobs:
         with:
           push: true
           tags: acrjskubeeducwe.azurecr.io/aca-votingapp-demo-we:${{ github.sha }}
-          file: ./Dockerfile
+          file: ./azure-vote/Dockerfile
           context: ./
 
 
