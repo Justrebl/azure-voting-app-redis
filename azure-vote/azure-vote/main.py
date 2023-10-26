@@ -27,6 +27,10 @@ else:
 
 # Redis configurations
 redis_server = os.environ['REDIS']
+if ("ENABLERESET" in os.environ and os.environ['ENABLERESET']):
+    redis_enable_reset = os.environ['ENABLERESET']
+else:
+    redis_enable_reset = app.config['ENABLERESET']
 
 # Redis Connection
 try:
