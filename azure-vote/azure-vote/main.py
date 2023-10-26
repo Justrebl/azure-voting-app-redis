@@ -27,10 +27,11 @@ else:
 
 # Redis configurations
 redis_server = os.environ['REDIS']
+
 if ("ENABLERESET" in os.environ and os.environ['ENABLERESET']):
-    redis_enable_reset = os.environ['ENABLERESET']
+    enableReset = os.environ['ENABLERESET']
 else:
-    redis_enable_reset = app.config['ENABLERESET']
+    enableReset = app.config['ENABLERESET']
 
 # Redis Connection
 try:
@@ -62,7 +63,7 @@ def index():
         vote2 = r.get(button2).decode('utf-8')            
 
         # Return index with values
-        return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
+        return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title, enableReset=enableReset)
 
     elif request.method == 'POST':
 
@@ -73,7 +74,7 @@ def index():
             r.set(button2,0)
             vote1 = r.get(button1).decode('utf-8')
             vote2 = r.get(button2).decode('utf-8')
-            return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
+            return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title, enableReset=enableReset)
         
         else:
 
@@ -86,7 +87,7 @@ def index():
             vote2 = r.get(button2).decode('utf-8')  
                 
             # Return results
-            return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
+            return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title, enableReset=enableReset)
 
 if __name__ == "__main__":
     app.run()

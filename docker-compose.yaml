@@ -13,5 +13,6 @@ services:
     container_name: azure-vote-front
     environment:
       REDIS: azure-vote-back
+      ENABLERESET: "false"
     ports:
         - "8080:80"
