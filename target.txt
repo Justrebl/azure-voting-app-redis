@@ -1,2 +1,0 @@
-GET https://aca-votingapp-demo-we.happysand-a78044fe.westeurope.azurecontainerapps.io
-
